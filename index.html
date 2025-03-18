@@ -46,7 +46,7 @@
                 UnityInAppBrowser.sendMessageFromJS(message);
             }
         }
-       function ExitGame(val, token) {
+        function ExitGame(val, token) {
           const message = { action: "close_app", value: "Close Gam" };
           window.vuplex.postMessage(JSON.stringify(message));
             if (urlParams.has('lobby')) {
@@ -55,17 +55,16 @@
             }
             //ELSE exit unity webview
         }
-        function OpenMultiplayer(link, val, token, bgm, sfx) {
-            const url = link + '?auth=' + token + '&uuid=' + val + '&sett=' + bgm + '.' + sfx;
-        
-            if (isAndroid() || isIOS()) {
-                const message = { action: "open_game", value: url };
-                window.vuplex.postMessage(JSON.stringify(message));
-            } else {
-                window.location.href = url;
-            }
-        }
 
+        function OpenMultiplayer(link, val, token, bgm, sfx) {
+          const url = link + '?auth=' + token + '&uuid=' + val + '&sett=' + bgm + '.' + sfx;
+          if (isAndroid() || isIOS()) {
+              const message = { action: "open_game", value: url };
+              window.vuplex.postMessage(JSON.stringify(message));
+          } else {
+              window.location.href = url;
+          }
+        }
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -102,7 +101,6 @@
         dataUrl: buildUrl + "/prod-single-jnp.data",
         frameworkUrl: buildUrl + "/prod-single-jnp.framework.js",
         codeUrl: buildUrl + "/prod-single-jnp.wasm",
-        symbolsUrl: buildUrl + "/prod-single-jnp.symbols.json",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Multisys Technologies Corporation",
         productName: "gamebox-jacknpoy",
